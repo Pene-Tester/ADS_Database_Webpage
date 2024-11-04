@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="sidebar">
+            <div class="admin-profile">
+                <img src="path_to_your_profile_image.jpg" alt="Profile Picture">
+                <div>
+                    <h3>Hello, {{ session['username'] }}</h3>
+                </div>
+            </div>
+            <div class="nav-menu">
+                <a class="nav-item" href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+                <a class="nav-item" href="{{ url_for('admin_profile') }}">Profile</a>
+                <a class="nav-item active" href="{{ url_for('add_user') }}">Add User</a>
+                <a class="nav-item" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="content-header">
+                <h1>Add User</h1>
+            </div>
+
+            <h2>Add New User</h2>
+            <form id="add-user-form" method="POST" action="{{ url_for('add_user') }}">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" class="input-field" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="input-field" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="input-field" required>
+                </div>
+
+                <button type="submit" class="btn btn-edit">Add User</button>
+            </form>
+
+            <script src="{{ url_for('static', filename='app.js') }}"></script>
+        </div>
+    </div>
+</body>
+</html>
